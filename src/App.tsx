@@ -1,26 +1,92 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+export const App: React.FC = () => {
+  const [bill, setBill] = useState<number | null>(null);
+  const [percent, setPercent] = useState<number>(0);
+  const [numberOfPeople, setNumberOfPeople] = useState<number | null>(null);
+
+  const reset = () => {
+    setBill(null);
+    setNumberOfPeople(null);
+  }
+
+  const tipSum = bill && percent
+    ? (bill * percent / 100)
+    : 0;
+  const tipPerPerson = (tipSum && numberOfPeople
+    ? (tipSum / numberOfPeople).toFixed(2)
+    : 0);
+  const totalPerPerson = (bill && numberOfPeople && percent
+    ? ((bill + bill * percent / 100) / numberOfPeople).toFixed(2)
+    : 0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <div className="container">
+        <div className="logo"></div>
+        <div className="calculator">
+          <div className='calculator__left'>
+            <div className='input'>
+              <h2 className='input__title'>Bill</h2>
+              <input
+                className='input__field input__field--bill'
+                type="text"
+                value={bill || ''}
+                onChange={(event) => setBill(+event.target.value)}
+                placeholder='0'
+              />
+            </div>
+            <div className='input__select'>
+              <h2 className='input__title'>Select Tip %</h2>
+              <div className='grid-container'>
+                <button onClick={() => setPercent(5)} className='grid-item'>5%</button>
+                <button onClick={() => setPercent(10)} className='grid-item'>10%</button>
+                <button onClick={() => setPercent(15)} className='grid-item'>15%</button>
+                <button onClick={() => setPercent(25)} className='grid-item'>25%</button>
+                <button onClick={() => setPercent(50)} className='grid-item'>50%</button>
+                <input
+                  onChange={(event) => setPercent(+event.target.value)}
+                  className='grid-item grid-item--input'
+                  type="text"
+                  placeholder='Custom'
+                />
+              </div>
+            </div>
+            <div className='input'>
+              <h2 className='input__title'>Number of People</h2>
+              <input
+                className='input__field input__field--people'
+                type="text"
+                value={numberOfPeople || ''}
+                onChange={(event) => setNumberOfPeople(+event.target.value)}
+                placeholder='0'
+              />
+            </div>
+          </div>
+          <div className='calculator__right'>
+            <div className='sumblocks'>
+              <div className='sumblock sumblock--tip'>
+                <div className='sumblock__content'>
+                  <div className='sumblock__content--line1'>Tip Amount</div>
+                  <div className='sumblock__content--line2'>/person</div>
+                </div>
+                <div className='sumblock__value'>{tipPerPerson}</div>
+              </div>
+              <div className='sumblock sumblock--total'>
+                <div className='sumblock__content'>
+                  <div className='sumblock__content--line1'>Total</div>
+                  <div className='sumblock__content--line2'>/person</div>
+                </div>
+                <div className='sumblock__value'>{totalPerPerson}</div>
+              </div >
+            </div>
+            <button className='reset-button' onClick={reset}>RESET</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

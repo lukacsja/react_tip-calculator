@@ -1,38 +1,208 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+:root {
+  --light-color: #5E7A7D;
+}
+
+body {
+  background-color: #C5E4E7;
+  font-family: 'Space Mono', monospace;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.grid-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  background-image: url(./images/logo.svg);
+  width: 90px;
+  height: 55px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+  margin-bottom: 150px;
+  align-self: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calculator {
+  display: flex;
+  gap: 48px;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+
+  padding: 32px 32px 32px 48px;
+
+  height: 480px;
+  width: 920px;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 20px;
+}
+
+.calculator__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 388px;
+  width: 380px;
+}
+
+.calculator__right {
+  background-color: #00474B;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  height: 412px;
+  width: 412px;
+  border-radius: 15px;
+}
+
+.input__title {
+  font-size: 16px;
+  color: var(--light-color);
+}
+
+.input__select {
+  display: grid;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 14px;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.grid-item {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0;
+  height: 48px;
+  width: 117px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background-color: #00474B;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Space Mono', monospace;
+}
+
+.grid-item:not(:last-child) {
+  cursor: pointer;
+}
+
+.grid-item:focus {
+  background-color: #26C2AE;
+  border-color: #26C2AE;
+  color: #00474B;
+}
+
+.grid-item--input {
+  background-color: #F3F9FA;
+}
+
+.grid-item--input::placeholder {
+  text-align: center;
+  color: #547878;
+}
+
+.grid-item--input:focus {
+  background-color: #fff;
+}
+
+.input__field {
+  height: 48px;
+  width: 380px;
+  color: #00474B;
+  font-family: 'Space Mono', monospace;
+  font-size: 24px;
+  background: #F3F9FA;
+  border-radius: 5px;
+  text-align: end;
+}
+
+.input__field:focus {
+  border: 2px solid #26C2AE;
+}
+
+.input__field--bill {
+  background-image: url('./images/icon-dollar.svg');
+  background-position: 17px, center;
+  background-repeat: no-repeat;
+  padding-right: 17px;
+}
+
+.input__field--people {
+  background-image: url('./images/icon-person.svg');
+  background-position: 17px, center;
+  background-repeat: no-repeat;
+  padding-right: 17px;
+}
+
+.calculator__right {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 30px 30px 30px;
+}
+
+.sumblock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sumblock__value {
+  color: #26C2AE;
+  font-size: 48px;
+  letter-spacing: -1px;
+}
+
+.sumblock__value::before {
+  content: '$';
+}
+
+.sumblock--tip {
+  margin-bottom: 60px;
+}
+
+.sumblock__content--line1 {
+  font-family: 'Space Mono', monospace;
+  color: #fff;
+}
+
+.sumblock__content--line2 {
+  font-family: 'Space Mono', monospace;
+  color: #7F9D9F;
+}
+
+.reset-button {
+  background: #26C2AE;
+  border-radius: 5px;
+  height: 48px;
+  width: 100%;
+  font-size: 20px;
+  font-family: 'Space Mono', monospace;
+  color: #00474B;
+  cursor: pointer;
 }
