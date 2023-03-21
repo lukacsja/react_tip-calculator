@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
 $color-main-green: #5E7A7D;
-$color-100-bg: #F3F9FA;
-$color-200-bg: #C5E4E7;
-$color-300-bg: #9FE8DF;
-$color-400-bg: #00474B;
-$color-bg-border: #26C2AE;
 $color-light-text: #7F9D9F;
+$color-green-100: #F3F9FA;
+$color-green-200: #C5E4E7;
+$color-green-300: #9FE8DF;
+$color-green-400: #00474B;
+$color-bg-border: #26C2AE;
 $color-placeholder: #547878;
 
 
 /* hide input arrows - Firefox */
 input[type='number'] {
-  -moz-appearance: textfield;
+  -appearance: textfield;
 }
 
 /* hide  input arrows - Chrome, Safari, Edge, Opera */
@@ -23,8 +23,7 @@ input::-webkit-inner-spin-button {
 }
 
 body {
-  background-color: $color-200-bg;
-  font-family: 'Space Mono', monospace;
+  background-color: $color-green-200;
 }
 
 .App {
@@ -32,6 +31,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: 'Space Mono', monospace;
 }
 
 .grid-container {
@@ -82,7 +82,7 @@ body {
     padding: 56px 40px 40px 40px;
     height: 100%;
     width: 100%;
-    background-color: $color-400-bg;
+    background-color: $color-green-400;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 15px;
   }
@@ -113,10 +113,10 @@ body {
     border: none;
     height: 48px;
     width: 380px;
-    color: $color-400-bg;
-    font-family: 'Space Mono', monospace;
+    color: $color-green-400;
+    font-family: inherit;
     font-size: 24px;
-    background: $color-100-bg;
+    background: $color-green-100;
     border-radius: 5px;
     text-align: end;
     cursor: pointer;
@@ -160,29 +160,30 @@ body {
   height: 48px;
   width: 117px;
   font-size: 24px;
-  background-color: $color-400-bg;
+  background-color: $color-green-400;
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-family: 'Space Mono', monospace;
+  font-family: inherit;
+  transition: all, 300ms;
 
   &:not(:last-child) {
     cursor: pointer;
 
     &:hover {
-      background-color: $color-300-bg;
-      color: $color-400-bg;
+      background-color: $color-green-300;
+      color: $color-green-400;
     }
   }
 
   &--active {
     background-color: $color-bg-border;
     border-color: $color-bg-border;
-    color: $color-400-bg;
+    color: $color-green-400;
   }
 
   &--input {
-    background-color: $color-100-bg;
+    background-color: $color-green-100;
     box-sizing: border-box;
     outline: none;
     border: none;
@@ -193,8 +194,8 @@ body {
     }
 
     &:focus {
-      background-color: $color-100-bg;
-      color: $color-400-bg;
+      background-color: $color-green-100;
+      color: $color-green-400;
       border: 2px solid $color-bg-border;
     }
   }
@@ -222,12 +223,10 @@ body {
 
   &__content {
     &--line1 {
-      font-family: 'Space Mono', monospace;
       color: #fff;
     }
 
     &--line2 {
-      font-family: 'Space Mono', monospace;
       color: $color-light-text;
     }
   }
@@ -241,11 +240,12 @@ body {
   height: 48px;
   width: 100%;
   font-size: 20px;
-  font-family: 'Space Mono', monospace;
-  color: $color-400-bg;
+  font-family: inherit;
+  color: $color-green-400;
   cursor: pointer;
+  transition: all, 300ms;
 
   &:hover {
-    background-color: $color-300-bg;
+    background-color: $color-green-300;
   }
 }
