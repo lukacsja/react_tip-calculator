@@ -4,12 +4,13 @@ import './App.scss';
 
 export const App: React.FC = () => {
   const [bill, setBill] = useState<number | null>(null);
-  const [percent, setPercent] = useState<number>(5);
+  const [percent, setPercent] = useState<number | null>(null);
   const [numberOfPeople, setNumberOfPeople] = useState<number | null>(null);
 
   const reset = () => {
     setBill(null);
     setNumberOfPeople(null);
+    setPercent(null);
   }
 
   const tipSum = bill && percent
