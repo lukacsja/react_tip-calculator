@@ -1,9 +1,10 @@
+import cn from 'classnames';
 import React, { useState } from 'react';
 import './App.css';
 
 export const App: React.FC = () => {
   const [bill, setBill] = useState<number | null>(null);
-  const [percent, setPercent] = useState<number>(0);
+  const [percent, setPercent] = useState<number>(5);
   const [numberOfPeople, setNumberOfPeople] = useState<number | null>(null);
 
   const reset = () => {
@@ -21,6 +22,12 @@ export const App: React.FC = () => {
     ? ((bill + bill * percent / 100) / numberOfPeople).toFixed(2)
     : 0);
 
+  const handleTipSelection = (
+    value: number,
+  ) => {
+    setPercent(value);
+  };
+
   return (
     <div className='App'>
       <div className="container">
@@ -31,7 +38,8 @@ export const App: React.FC = () => {
               <h2 className='input__title'>Bill</h2>
               <input
                 className='input__field input__field--bill'
-                type="text"
+                type="number"
+                min={1}
                 value={bill || ''}
                 onChange={(event) => setBill(+event.target.value)}
                 placeholder='0'
@@ -40,15 +48,50 @@ export const App: React.FC = () => {
             <div className='input__select'>
               <h2 className='input__title'>Select Tip %</h2>
               <div className='grid-container'>
-                <button onClick={() => setPercent(5)} className='grid-item'>5%</button>
-                <button onClick={() => setPercent(10)} className='grid-item'>10%</button>
-                <button onClick={() => setPercent(15)} className='grid-item'>15%</button>
-                <button onClick={() => setPercent(25)} className='grid-item'>25%</button>
-                <button onClick={() => setPercent(50)} className='grid-item'>50%</button>
+                <button
+                  onClick={() => handleTipSelection(5)}
+                  className={cn(
+                    'grid-item',
+                    { 'grid-item--active': percent === 5 },
+                  )}
+                >
+                  5%
+                </button>
+                <button
+                  onClick={() => handleTipSelection(10)} className={cn(
+                    'grid-item',
+                    { 'grid-item--active': percent === 10 },
+                  )}
+                >
+                  10%
+                </button>
+                <button
+                  onClick={() => handleTipSelection(15)} className={cn(
+                    'grid-item',
+                    { 'grid-item--active': percent === 15 },
+                  )}
+                >
+                  15%
+                </button>
+                <button onClick={() => handleTipSelection(25)} className={cn(
+                  'grid-item',
+                  { 'grid-item--active': percent === 25 },
+                )}
+                >
+                  25%
+                </button>
+                <button onClick={() => handleTipSelection(50)} className={cn(
+                  'grid-item',
+                  { 'grid-item--active': percent === 50 },
+                )}
+                >
+                  50%
+                </button>
                 <input
+                  type="number"
+                  min={1}
                   onChange={(event) => setPercent(+event.target.value)}
                   className='grid-item grid-item--input'
-                  type="text"
                   placeholder='Custom'
                 />
               </div>
@@ -57,7 +100,8 @@ export const App: React.FC = () => {
               <h2 className='input__title'>Number of People</h2>
               <input
                 className='input__field input__field--people'
-                type="text"
+                type="number"
+                min={1}
                 value={numberOfPeople || ''}
                 onChange={(event) => setNumberOfPeople(+event.target.value)}
                 placeholder='0'

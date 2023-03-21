@@ -1,6 +1,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
+/* hide input arrows - Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* hide  input arrows - Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 :root {
   --light-color: #5E7A7D;
 }
@@ -49,7 +61,7 @@ body {
   width: 920px;
   background-color: #fff;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 20px;
+  border-radius: 25px;
 }
 
 .calculator__left {
@@ -63,8 +75,8 @@ body {
 .calculator__right {
   background-color: #00474B;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  height: 412px;
-  width: 412px;
+  height: 417px;
+  width: 413px;
   border-radius: 15px;
 }
 
@@ -110,7 +122,7 @@ body {
   cursor: pointer;
 }
 
-.grid-item:focus {
+.grid-item--active {
   background-color: #26C2AE;
   border-color: #26C2AE;
   color: #00474B;
@@ -118,6 +130,9 @@ body {
 
 .grid-item--input {
   background-color: #F3F9FA;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
 }
 
 .grid-item--input::placeholder {
@@ -126,10 +141,15 @@ body {
 }
 
 .grid-item--input:focus {
-  background-color: #fff;
+  background-color: #F3F9FA;
+  color: #00474B;
+  border: 3px solid #26C2AE;
 }
 
 .input__field {
+  box-sizing: border-box;
+  outline: none;
+  border: none;
   height: 48px;
   width: 380px;
   color: #00474B;
@@ -138,10 +158,11 @@ body {
   background: #F3F9FA;
   border-radius: 5px;
   text-align: end;
+  cursor: pointer;
 }
 
 .input__field:focus {
-  border: 2px solid #26C2AE;
+  border: 3px solid #26C2AE;
 }
 
 .input__field--bill {
@@ -205,4 +226,8 @@ body {
   font-family: 'Space Mono', monospace;
   color: #00474B;
   cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #9FE8DF;
 }
