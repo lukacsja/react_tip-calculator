@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 
 export const App: React.FC = () => {
   const [bill, setBill] = useState<number | null>(null);
@@ -46,7 +46,11 @@ export const App: React.FC = () => {
               />
             </div>
             <div className='input__select'>
-              <h2 className='input__title'>Select Tip %</h2>
+              <h2
+                className='input__title input__title--tip'
+              >
+                Select Tip %
+              </h2>
               <div className='grid-container'>
                 <button
                   onClick={() => handleTipSelection(5)}
