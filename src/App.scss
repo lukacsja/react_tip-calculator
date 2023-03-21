@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
+$color-main-green: #5E7A7D;
+$color-100-bg: #F3F9FA;
+$color-200-bg: #C5E4E7;
+$color-300-bg: #9FE8DF;
+$color-400-bg: #00474B;
+$color-bg-border: #26C2AE;
+$color-light-text: #7F9D9F;
+$color-placeholder: #547878;
+
+
 /* hide input arrows - Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
@@ -12,12 +22,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-:root {
-  --light-color: #5E7A7D;
-}
-
 body {
-  background-color: #C5E4E7;
+  background-color: $color-200-bg;
   font-family: 'Space Mono', monospace;
 }
 
@@ -31,31 +37,28 @@ body {
 .grid-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
-  justify-content: center;
 }
 
 .logo {
-  background-image: url(./images/logo.svg);
-  width: 90px;
-  height: 55px;
-  background-repeat: no-repeat;
-  background-position: center;
   margin: 0 auto;
   margin-bottom: 150px;
   align-self: center;
+  width: 90px;
+  height: 55px;
+  background-image: url(./images/logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .calculator {
   display: flex;
-  gap: 48px;
   justify-content: space-between;
   align-items: center;
-  /* height: 100vh; */
-
+  gap: 48px;
   padding: 32px 32px 32px 48px;
-
   height: 480px;
   width: 920px;
   background-color: #fff;
@@ -77,20 +80,20 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding: 56px 40px 40px 40px;
-    background-color: #00474B;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     height: 100%;
     width: 100%;
+    background-color: $color-400-bg;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 15px;
   }
 }
 
 .input {
   &__title {
-    font-size: 16px;
-    color: var(--light-color);
     margin: 0;
     margin-bottom: 6px;
+    font-size: 16px;
+    color: $color-main-green;
 
     &--tip {
       margin: 0;
@@ -110,16 +113,16 @@ body {
     border: none;
     height: 48px;
     width: 380px;
-    color: #00474B;
+    color: $color-400-bg;
     font-family: 'Space Mono', monospace;
     font-size: 24px;
-    background: #F3F9FA;
+    background: $color-100-bg;
     border-radius: 5px;
     text-align: end;
     cursor: pointer;
 
     &:focus {
-      border: 2px solid #26C2AE;
+      border: 2px solid $color-bg-border;
     }
 
     &--bill {
@@ -149,15 +152,15 @@ body {
 
 .grid-item {
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 0;
   height: 48px;
   width: 117px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 24px;
-  background-color: #00474B;
+  background-color: $color-400-bg;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -165,29 +168,34 @@ body {
 
   &:not(:last-child) {
     cursor: pointer;
+
+    &:hover {
+      background-color: $color-300-bg;
+      color: $color-400-bg;
+    }
   }
 
   &--active {
-    background-color: #26C2AE;
-    border-color: #26C2AE;
-    color: #00474B;
+    background-color: $color-bg-border;
+    border-color: $color-bg-border;
+    color: $color-400-bg;
   }
 
   &--input {
-    background-color: #F3F9FA;
+    background-color: $color-100-bg;
     box-sizing: border-box;
     outline: none;
     border: none;
 
     &::placeholder {
       text-align: center;
-      color: #547878;
+      color: $color-placeholder;
     }
 
     &:focus {
-      background-color: #F3F9FA;
-      color: #00474B;
-      border: 2px solid #26C2AE;
+      background-color: $color-100-bg;
+      color: $color-400-bg;
+      border: 2px solid $color-bg-border;
     }
   }
 }
@@ -198,7 +206,7 @@ body {
   justify-content: space-between;
 
   &__value {
-    color: #26C2AE;
+    color: $color-bg-border;
     font-size: 48px;
     letter-spacing: -1px;
     line-height: 100%;
@@ -220,24 +228,24 @@ body {
 
     &--line2 {
       font-family: 'Space Mono', monospace;
-      color: #7F9D9F;
+      color: $color-light-text;
     }
   }
 }
 
 .reset-button {
   box-sizing: border-box;
-  background: #26C2AE;
+  background: $color-bg-border;
   border: none;
   border-radius: 5px;
   height: 48px;
   width: 100%;
   font-size: 20px;
   font-family: 'Space Mono', monospace;
-  color: #00474B;
+  color: $color-400-bg;
   cursor: pointer;
 
   &:hover {
-    background-color: #9FE8DF;
+    background-color: $color-300-bg;
   }
 }
