@@ -4,22 +4,22 @@ import './App.scss';
 
 export const App: React.FC = () => {
   const [bill, setBill] = useState<number | null>(null);
-  const [percent, setPercent] = useState<number | null>(null);
+  const [percent, setPercent] = useState<number>(0);
   const [numberOfPeople, setNumberOfPeople] = useState<number | null>(null);
 
   const reset = () => {
     setBill(null);
     setNumberOfPeople(null);
-    setPercent(null);
+    setPercent(0);
   }
 
-  const tipSum = bill && percent
+  const tipSum = bill
     ? (bill * percent / 100)
     : 0;
-  const tipPerPerson = (tipSum && numberOfPeople
+  const tipPerPerson = (tipSum && numberOfPeople !== null
     ? (tipSum / numberOfPeople).toFixed(2)
     : 0);
-  const totalPerPerson = (bill && numberOfPeople && percent
+  const totalPerPerson = (bill && numberOfPeople !== null
     ? ((bill + bill * percent / 100) / numberOfPeople).toFixed(2)
     : 0);
 
@@ -34,9 +34,18 @@ export const App: React.FC = () => {
         <div className="calculator">
           <div className='calculator__left'>
             <div className='input'>
-              <h2 className='input__title'>Bill</h2>
+              <h2 className='input__title'>
+                Bill
+                {bill === 0 &&
+                  <span className="input__title--error">
+                    Can't be zero
+                  </span>}
+              </h2>
               <input
-                className='input__field input__field--bill'
+                className={cn(
+                  'input__field input__field--bill',
+                  { 'input__field--has-error': bill === 0 },
+                )}
                 type="number"
                 min={1}
                 value={bill || ''}
@@ -100,9 +109,18 @@ export const App: React.FC = () => {
               </div>
             </div>
             <div className='input'>
-              <h2 className='input__title'>Number of People</h2>
+              <h2 className='input__title'>
+                Number of People
+                {numberOfPeople === 0 &&
+                  <span className="input__title--error">
+                    Can't be zero
+                  </span>}
+              </h2>
               <input
-                className='input__field input__field--people'
+                className={cn(
+                  'input__field input__field--people',
+                  { 'input__field--has-error': numberOfPeople === 0 },
+                )}
                 type="number"
                 min={1}
                 value={numberOfPeople || ''}

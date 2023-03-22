@@ -4,6 +4,7 @@
 
 $color-main-green: #5E7A7D;
 $color-light-text: #7F9D9F;
+$color-orange-error: #E17457;
 $color-green-100: #F3F9FA;
 $color-green-200: #C5E4E7;
 $color-green-300: #9FE8DF;
@@ -34,14 +35,10 @@ body {
   align-items: center;
   height: 100vh;
   font-family: 'Space Mono', monospace;
-}
 
-.grid-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  @include onMobileAndTablet() {
+    align-items: flex-start;
+  }
 }
 
 .logo {
@@ -53,6 +50,11 @@ body {
   background-image: url(./images/logo.svg);
   background-repeat: no-repeat;
   background-position: center;
+
+  @include onMobileAndTablet() {
+    margin-bottom: 40px;
+    margin-top: 50px;
+  }
 }
 
 .calculator {
@@ -111,10 +113,17 @@ body {
 
 .input {
   &__title {
+    display: flex;
+    align-items: center;
     margin: 0;
     margin-bottom: 6px;
     font-size: 16px;
     color: $color-main-green;
+
+    &--error {
+      margin-left: auto;
+      color: $color-orange-error;
+    }
 
     &--tip {
       margin: 0;
@@ -162,6 +171,14 @@ body {
       background-position: 17px, center;
       background-repeat: no-repeat;
       padding-right: 17px;
+    }
+
+    &--has-error {
+      border: 2px solid $color-orange-error;
+
+      &:focus {
+        border: 2px solid $color-orange-error;
+      }
     }
   }
 }
