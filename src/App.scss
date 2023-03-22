@@ -1,3 +1,5 @@
+@import "./utils/mixins.scss";
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
 $color-main-green: #5E7A7D;
@@ -65,6 +67,13 @@ body {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 25px;
 
+  @include onMobileAndTablet() {
+    flex-direction: column;
+    width: auto;
+    height: 790px;
+    padding: 32px;
+  }
+
   &__left {
     display: flex;
     flex-direction: column;
@@ -72,6 +81,12 @@ body {
     gap: 40px;
     height: auto;
     width: auto;
+
+    @include onMobileAndTablet() {
+      gap: 32px;
+      height: auto;
+      width: auto;
+    }
   }
 
   &__right {
@@ -85,6 +100,12 @@ body {
     background-color: $color-green-400;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 15px;
+
+    @include onMobileAndTablet() {
+      padding: 36px 22px 24px 22px;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 
@@ -121,6 +142,10 @@ body {
     text-align: end;
     cursor: pointer;
 
+    @include onMobileAndTablet() {
+      width: 100%;
+    }
+
     &:focus {
       border: 2px solid $color-bg-border;
     }
@@ -148,6 +173,12 @@ body {
   gap: 14px;
   height: 100%;
   width: 100%;
+
+  @include onMobileAndTablet() {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 16px;
+  }
 }
 
 .grid-item {
@@ -158,7 +189,7 @@ body {
   text-align: center;
   padding: 0;
   height: 48px;
-  width: 117px;
+  width: 118px;
   font-size: 24px;
   background-color: $color-green-400;
   color: #fff;
@@ -166,6 +197,10 @@ body {
   border-radius: 5px;
   font-family: inherit;
   transition: all, 300ms;
+
+  @include onMobileAndTablet() {
+    width: 100%;
+  }
 
   &:not(:last-child) {
     cursor: pointer;
@@ -212,6 +247,11 @@ body {
     letter-spacing: -1px;
     line-height: 100%;
 
+    @include onMobileAndTablet() {
+      font-size: 32px;
+      letter-spacing: -0.7px;
+    }
+
     &::before {
       content: '$';
     }
@@ -219,6 +259,10 @@ body {
 
   &--tip {
     margin-bottom: 60px;
+
+    @include onMobileAndTablet() {
+      margin-bottom: 20px;
+    }
   }
 
   &__content {

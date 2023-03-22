@@ -23,9 +23,7 @@ export const App: React.FC = () => {
     ? ((bill + bill * percent / 100) / numberOfPeople).toFixed(2)
     : 0);
 
-  const handleTipSelection = (
-    value: number,
-  ) => {
+  const handleTipSelection = (value: number) => {
     setPercent(value);
   };
 
