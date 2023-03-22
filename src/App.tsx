@@ -102,6 +102,7 @@ export const App: React.FC = () => {
                 <input
                   type="number"
                   min={1}
+                  value={percent || ''}
                   onChange={(event) => setPercent(+event.target.value)}
                   className='grid-item grid-item--input'
                   placeholder='Custom'
